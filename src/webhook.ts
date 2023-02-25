@@ -10,7 +10,7 @@ export const verifyWebhook = (
 		return { isVerified: false, rawBody: rawBody, error: "NO_SIGNATURE" };
 	}
 	const coinBaseSignature = crypto
-		.createHmac("sha256", ipnSecret)
+		.createHmac("sha512", ipnSecret)
 		.update(JSON.stringify(rawBody, Object.keys(rawBody).sort()))
 		.digest("hex");
 	if (signature !== coinBaseSignature) {
