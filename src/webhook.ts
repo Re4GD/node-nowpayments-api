@@ -2,7 +2,7 @@ import crypto from "crypto";
 import { VerifyWebhookResult, WebhookBody } from "./types/webhook";
 
 export const verifyWebhook = (
-	rawBody: unknown,
+	rawBody: object,
 	signature: string | string[] | undefined,
 	ipnSecret: string,
 ): VerifyWebhookResult => {
@@ -11,7 +11,7 @@ export const verifyWebhook = (
 	}
 	const coinBaseSignature = crypto
 		.createHmac("sha256", ipnSecret)
-		.update(JSON.stringify(rawBody))
+		.update(JSON.stringify(rawBody, Object.keys(rawBody).sort()))
 		.digest("hex");
 	if (signature !== coinBaseSignature) {
 		return { isVerified: false, rawBody: rawBody, error: "INVALID_SIGNATURE" };
