@@ -7,18 +7,17 @@ export const verifyWebhook = (
 	ipnSecret: string,
 ): VerifyWebhookResult => {
 	if (!signature) {
-		return { isVerified: false, rawBody: rawBody, error: "NO_SIGNATURE" };
+		return { isVerified: false, error: "NO_SIGNATURE" };
 	}
 	const npSignature = crypto
 		.createHmac("sha512", ipnSecret)
 		.update(JSON.stringify(rawBody, Object.keys(rawBody).sort()))
 		.digest("hex");
 	if (signature !== npSignature) {
-		return { isVerified: false, rawBody: rawBody, error: "INVALID_SIGNATURE" };
+		return { isVerified: false, error: "INVALID_SIGNATURE" };
 	}
 	return {
 		isVerified: true,
-		rawBody: rawBody,
 		typedBody: rawBody as WebhookBody,
 	};
 };

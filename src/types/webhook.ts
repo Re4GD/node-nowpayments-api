@@ -20,9 +20,12 @@ export interface WebhookBody {
 	outcome_currency: string;
 }
 
-export type VerifyWebhookResult = {
-	isVerified: boolean;
-	error?: "NO_SIGNATURE" | "INVALID_SIGNATURE";
-	rawBody: unknown;
-	typedBody?: WebhookBody;
-};
+export type VerifyWebhookResult =
+	| {
+			isVerified: true;
+			typedBody: WebhookBody;
+	  }
+	| {
+			isVerified: false;
+			error: "NO_SIGNATURE" | "INVALID_SIGNATURE";
+	  };
