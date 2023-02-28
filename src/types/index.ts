@@ -1,3 +1,4 @@
+export * from "./client";
 export * from "./webhook";
 
 export type Result<T> = {
