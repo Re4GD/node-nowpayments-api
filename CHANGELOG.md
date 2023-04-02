@@ -1,5 +1,11 @@
 # node-nowpayments-api
 
+## 0.4.0
+
+### Minor Changes
+
+- Added payment and payout methods
+
 ## 0.2.3
 
 ### Patch Changes
