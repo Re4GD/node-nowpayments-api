@@ -1,5 +1,11 @@
 # node-nowpayments-api
 
+## 0.4.2
+
+### Patch Changes
+
+- Fix webhook error
+
 ## 0.4.1
 
 ### Patch Changes
