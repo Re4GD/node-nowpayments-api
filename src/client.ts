@@ -19,7 +19,6 @@ import {
 	PayoutAuthenticationResult,
 	Result,
 	VerifyPayoutParams,
-	VerifyPayoutResult,
 } from "./types";
 
 export class NowPaymentsClient {
@@ -170,7 +169,7 @@ export class NowPaymentsClient {
 	public async verifyPayout(
 		params: VerifyPayoutParams,
 		authorization: string,
-	): Promise<Result<VerifyPayoutResult>> {
+	): Promise<Result<string>> {
 		const jwtToken = "Bearer " + authorization.replace("Bearer ", "");
 		try {
 			const { data } = await this.axiosInstance.post(
