@@ -1,4 +1,7 @@
 export * from "./client";
+export * from "./client.currencies";
+export * from "./client.payment";
+export * from "./client.payout";
 export * from "./webhook";
 
 export type Result<T> = {
@@ -16,3 +19,11 @@ export type PaymentStatus =
 	| "failed"
 	| "refunded"
 	| "expired";
+
+export type PayoutStatus =
+	| "waiting"
+	| "processing"
+	| "sending"
+	| "finished"
+	| "failed"
+	| "rejected";
