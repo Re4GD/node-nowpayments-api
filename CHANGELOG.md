@@ -1,5 +1,11 @@
 # node-nowpayments-api
 
+## 0.4.1
+
+### Patch Changes
+
+- Payout webhook and function param/return types
+
 ## 0.4.0
 
 ### Minor Changes
