@@ -21,9 +21,10 @@ export type PaymentStatus =
 	| "expired";
 
 export type PayoutStatus =
-	| "waiting"
-	| "processing"
-	| "sending"
-	| "finished"
-	| "failed"
-	| "rejected";
+	| "CREATING"
+	| "WAITING"
+	| "PROCESSING"
+	| "SENDING"
+	| "FINISHED"
+	| "FAILED"
+	| "REJECTED";

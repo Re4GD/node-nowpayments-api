@@ -1,6 +1,6 @@
-import { PaymentStatus } from "./";
+import { PaymentStatus, PayoutStatus } from "./";
 
-export interface WebhookBody {
+export interface WebhookPaymentBody {
 	payment_id: number;
 	invoice_id?: number;
 	payment_status: PaymentStatus;
@@ -20,10 +20,26 @@ export interface WebhookBody {
 	outcome_currency: string;
 }
 
+export interface WebhookPayoutBody {
+	id: string;
+	batch_withdrawal_id: string;
+	status: PayoutStatus;
+	error?: string;
+	currency: string;
+	amount: string;
+	address: string;
+	extra_id?: string;
+	hash?: string;
+	ipn_callback_url: string;
+	created_at: string;
+	requested_at?: string;
+	updated_at?: string;
+}
+
 export type VerifyWebhookResult =
 	| {
 			isVerified: true;
-			typedBody: WebhookBody;
+			typedBody: WebhookPaymentBody | WebhookPayoutBody;
 	  }
 	| {
 			isVerified: false;
