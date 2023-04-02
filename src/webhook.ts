@@ -1,5 +1,9 @@
 import crypto from "crypto";
-import { VerifyWebhookResult, WebhookBody } from "./types/webhook";
+import {
+	VerifyWebhookResult,
+	WebhookPaymentBody,
+	WebhookPayoutBody,
+} from "./types/webhook";
 
 export const verifyWebhook = (
 	rawBody: any,
@@ -18,6 +22,6 @@ export const verifyWebhook = (
 	}
 	return {
 		isVerified: true,
-		typedBody: rawBody as WebhookBody,
+		typedBody: rawBody as WebhookPaymentBody | WebhookPayoutBody,
 	};
 };
